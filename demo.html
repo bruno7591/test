@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange.pl - Démonstration</title>
+    <style>
+        /* Styles intégrés pour la démonstration */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .demo-header {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-header h1 {
+            color: #ff6600;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .demo-header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .pages-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .page-preview {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .page-preview:hover {
+            transform: translateY(-5px);
+        }
+
+        .preview-header {
+            background: linear-gradient(135deg, #ff6600, #ff8533);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .preview-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .preview-content {
+            padding: 30px;
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        .login-preview {
+            background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, #ff6600, #ff8533);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 8px;
+        }
+
+        .warning-section {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b3);
+            border: 1px solid #ffcc80;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .warning-icon {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            padding: 15px;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: #ff6600;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .features {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .features h3 {
+            color: #ff6600;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: #ff6600;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .pages-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🍊 Réplique Orange.pl</h1>
+            <p>Démonstration des pages de connexion et de mise à jour des informations</p>
+        </div>
+
+        <div class="pages-container">
+            <!-- Page de connexion -->
+            <div class="page-preview">
+                <div class="preview-header">
+                    <h2>Page de Connexion</h2>
+                    <p>Interface d'authentification Orange.pl</p>
+                </div>
+                <div class="preview-content">
+                    <div class="login-preview">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="background: #ff6600; color: white; padding: 8px 16px; border-radius: 6px; display: inline-block; font-weight: bold;">
+                                Orange
+                            </div>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: 15px;">Zaloguj się</h3>
+                        <p style="text-align: center; margin-bottom: 20px; opacity: 0.9;">Wprowadź swoje dane, aby uzyskać dostęp do konta</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adres e-mail lub numer telefonu</label>
+                        <input type="text" placeholder="Wprowadź adres e-mail lub numer telefonu" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hasło</label>
+                        <input type="password" placeholder="Wprowadź hasło" />
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 14px;">
+                        <label>
+                            <input type="checkbox" style="margin-right: 8px; width: auto;" />
+                            Zapamiętaj mnie
+                        </label>
+                        <a href="#" style="color: #ff6600; text-decoration: none;">Zapomniałeś hasła?</a>
+                    </div>
+
+                    <button class="btn-orange" style="width: 100%;">ZALOGUJ SIĘ</button>
+
+                    <div style="text-align: center; margin: 20px 0; color: #999;">lub</div>
+
+                    <div style="text-align: center;">
+                        <button style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer;">
+                            🔵 Zaloguj się przez Facebook
+                        </button>
+                        <button style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer;">
+                            🔴 Zaloguj się przez Google
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page de mise à jour -->
+            <div class="page-preview">
+                <div class="preview-header">
+                    <h2>Page de Mise à Jour</h2>
+                    <p>Notification de mise à jour des informations</p>
+                </div>
+                <div class="preview-content">
+                    <div class="warning-section">
+                        <div class="warning-icon">⚠️</div>
+                        <h3 style="text-align: center; color: #e65100; margin-bottom: 10px;">Aktualizacja wymagana</h3>
+                        <p style="text-align: center; color: #bf360c;">Twoje dane wymagają aktualizacji</p>
+                    </div>
+
+                    <div style="background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #e0e0e0;">
+                        <h4 style="color: #ff6600; margin-bottom: 15px;">Dlaczego muszę zaktualizować swoje dane?</h4>
+                        <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                            Zgodnie z obowiązującymi przepisami prawa oraz w celu zapewnienia najwyższego poziomu bezpieczeństwa Twojego konta, prosimy o aktualizację Twoich danych osobowych.
+                        </p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 8px; color: #333;">✓ Aktualne dane kontaktowe</li>
+                            <li style="margin-bottom: 8px; color: #333;">✓ Weryfikacja tożsamości</li>
+                            <li style="margin-bottom: 8px; color: #333;">✓ Zgodność z RODO</li>
+                            <li style="margin-bottom: 8px; color: #333;">✓ Bezpieczeństwo konta</li>
+                        </ul>
+                    </div>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h5 style="margin-bottom: 5px;">Przygotuj dokumenty</h5>
+                                <p style="font-size: 12px; color: #666;">Dowód osobisty lub paszport</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h5 style="margin-bottom: 5px;">Wypełnij formularz</h5>
+                                <p style="font-size: 12px; color: #666;">Zaktualizuj dane osobowe</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h5 style="margin-bottom: 5px;">Potwierdź zmiany</h5>
+                                <p style="font-size: 12px; color: #666;">Zweryfikuj informacje</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="btn-orange">Zaktualizuj dane teraz</button>
+                        <button style="background: white; color: #ff6600; border: 2px solid #ff6600; border-radius: 6px; padding: 12px 24px; font-size: 16px; font-weight: 600; cursor: pointer;">Przypomnij mi później</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>Fonctionnalités Implémentées</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔐</div>
+                    <h4>Authentification</h4>
+                    <p>Formulaire de connexion avec validation et options de connexion sociale</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📋</div>
+                    <h4>Mise à jour des données</h4>
+                    <p>Interface claire pour informer les utilisateurs des mises à jour requises</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Design Orange.pl</h4>
+                    <p>Interface fidèle au design d'Orange avec couleurs et typographie authentiques</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive</h4>
+                    <p>Design adaptatif pour tous les appareils (desktop, tablette, mobile)</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🇵🇱</div>
+                    <h4>Localisation</h4>
+                    <p>Interface entièrement en polonais avec terminologie Orange Polska</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h4>React + CSS</h4>
+                    <p>Application React moderne avec CSS personnalisé et animations fluides</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
